@@ -2,7 +2,7 @@
 
 namespace App\DataTables;
 
-use App\Models\Area;
+use App\Models\Section;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
@@ -12,7 +12,7 @@ use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class AreasDataTable extends DataTable
+class SectionDataTable extends DataTable
 {
     /**
      * Build the DataTable class.
@@ -22,30 +22,22 @@ class AreasDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-            ->editColumn('area', function (Area $area) {
-                return view('pages.area.columns._user', compact('area'));
+            ->editColumn('name', function (Section $section) {
+                return ucwords($section->name);
             })
-            ->editColumn('name', function (Area $area) {
-                return ucwords($area->name);
+            ->editColumn('created_at', function (Section $section) {
+                return $section->created_at->format('d M Y, h:i a');
             })
-//            ->editColumn('last_login_at', function (Area $area) {
-//                return sprintf('<div class="badge badge-light fw-bold">%s</div>', $area->last_login_at ? $area->last_login_at->diffForHumans() : $area->updated_at->diffForHumans());
-//            })
-            ->editColumn('created_at', function (Area $area) {
-                return $area->created_at->format('d M Y, h:i a');
-            })
-            ->addColumn('action', function (Area $area) {
-                return view('pages.area.columns._actions', compact('area'));
+            ->addColumn('action', function (Section $section) {
+                return view('pages.section.columns._actions', compact('section'));
             })
             ->setRowId('id');
-//            ->addColumn('action', 'area.action')
-//            ->setRowId('id');
     }
 
     /**
      * Get the query source of dataTable.
      */
-    public function query(Area $model): QueryBuilder
+    public function query(Section $model): QueryBuilder
     {
         return $model->newQuery()->orderByDesc('id');
     }
@@ -56,29 +48,13 @@ class AreasDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
-            ->setTableId('areas-table')
+            ->setTableId('table')
             ->columns($this->getColumns())
             ->minifiedAjax()
             ->dom('rt' . "<'row'<'col-sm-12 col-md-5'l><'col-sm-12 col-md-7'p>>",)
             ->addTableClass('table align-middle table-row-dashed fs-6 gy-5 dataTable no-footer text-gray-600 fw-semibold')
             ->setTableHeadClass('text-start text-muted fw-bold fs-7 text-uppercase gs-0')
             ->orderBy(2);
-//            ->drawCallback("function() {" . file_get_contents(resource_path('views/pages//apps/area-management/areas/columns/_draw-scripts.js')) . "}");
-        return $this->builder()
-                    ->setTableId('areas-table')
-                    ->columns($this->getColumns())
-                    ->minifiedAjax()
-                    //->dom('Bfrtip')
-                    ->orderBy(1)
-                    ->selectStyleSingle()
-                    ->buttons([
-                        Button::make('excel'),
-                        Button::make('csv'),
-                        Button::make('pdf'),
-                        Button::make('print'),
-                        Button::make('reset'),
-                        Button::make('reload')
-                    ]);
     }
 
     /**
@@ -113,6 +89,6 @@ class AreasDataTable extends DataTable
      */
     protected function filename(): string
     {
-        return 'Areas_' . date('YmdHis');
+        return 'Section_' . date('YmdHis');
     }
 }

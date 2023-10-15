@@ -9,6 +9,7 @@
          data-kt-scroll-activate="true" data-kt-scroll-max-height="auto" data-kt-scroll-dependencies="#kt_modal_header"
          data-kt-scroll-wrappers="#kt_modal_scroll" data-kt-scroll-offset="300px">
         <x-group-input-text label="name" value="{{isset($model)?$model->name:''}}" name="name" ></x-group-input-text>
+        <x-select label="section" :options="\App\Models\Category::pluck('id','name')->toArray()" old="{{isset($model)?$model->section_id:''}}" name="section_id" ></x-select>
     </div>
     <!--end::Scroll-->
     <!--begin::Actions-->
@@ -23,6 +24,4 @@
     <!--end::Actions-->
 </form>
 <!--end::Form-->
-{{--@push('scripts')--}}
-{{--    <script src="{{asset("assets/js/custom/apps/user-management/users/list/add.js")}}"></script>--}}
-{{--@endpush--}}
+

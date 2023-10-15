@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Area>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\SubCategory>
  */
-class AreaFactory extends Factory
+class SubCategoryFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -16,9 +16,8 @@ class AreaFactory extends Factory
      */
     public function definition(): array
     {
-        $faker = \Faker\Factory::create('ar_EG');
         return [
-            'name' => $faker->city(),
+            //
         ];
     }
 }

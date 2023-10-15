@@ -34,7 +34,7 @@ class AreaController extends Controller
         $area = new Area();
         $area->name = $request->name;
         $area->save();
-        return response()->json(['status'=>true,'msg'=>'ok']);
+        return response()->json(['status'=>true,'msg'=>'تم الحفظ بنجاح']);
     }
 
     /**
@@ -61,7 +61,7 @@ class AreaController extends Controller
     {
         $area->name = $request->name;
         $area->save();
-        return response()->json(['status'=>true,'msg'=>'ok']);
+        return response()->json(['status'=>true,'msg'=>'تم الحفظ بنجاح']);
     }
 
     /**

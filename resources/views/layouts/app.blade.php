@@ -83,30 +83,7 @@
 </div>
 <!--end::App-->
 
-<div class="modal modal-sticky modal-static overflow-hidden" id="modal-form" role="dialog" data-backdrop="false">
-    <div class="modal-dialog h-100 d-flex justify-content-center align-items-center " role="document">
-        <div class="modal-content ">
-            <div class="d-flex flex-stack py-5 ps-8 pe-5 border-bottom">
-                <h5 class="fw-bold m-0"></h5>
-                <div class="d-flex ms-2">
-                    <div class="btn btn-icon btn-sm btn-light-primary ms-2 close" data-bs-dismiss="modal">
-                        <i class="fas fa-times"> </i>
-                    </div>
-                </div>
-            </div>
-            <div class="d-block  overflow-auto" style="max-height: 550px">
-                <div class="append">
-                </div>
-                <div class="card rounded-0 bg-light-dark ">
-                </div>
-                <div id="load" class="load" style="display: none; height: 370px;"><img
-                        src="{{ asset('images/gif/loading.gif') }}" height="370" width="100%"></div>
-            </div>
-
-        </div>
-    </div>
-</div>
-
+@include('model')
 
 <!--begin::Javascript-->
 <script>var hostUrl = "assets/";</script>
@@ -129,84 +106,7 @@
 <script src="assets/js/custom/utilities/modals/users-search.js"></script>
 <!--end::Custom Javascript-->
 {{--    <script src="{{asset('main.js')}}"></script>--}}
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        // document.addEventListener('DOMContentLoaded', function() {
-        // $(document).on('click','.element',function(){
-        //
-        //     alert('Clicked');
-        //
-        // });
-        $(document).on('click', '.has_action', function () {
-            $('#modal-form #load').show();
-            $('#modal-form').show();
-            var url = $(this).data('action');
-            console.log(url)
-            $.ajax({
-                type: 'GET',
-                url: url,
-                success: function (data) {
-                    $('#modal-form .append').html(data);
-                    $('#modal-form #load').hide();
-                },
-                error: function (error) {
-                    console.log(error);
-                }
-            });
-        });
-
-        $(document).on('submit', '#kt_modal_form', function (event) {
-            event.preventDefault();
-            $('#modal-form #load').show();
-
-            var form = $(this);
-            var formUrl = form.attr('action');
-            var method = form.data('method');
-
-            // var formUrl = $(this).action;
-            // var method = $(this).data('method');
-            console.log(formUrl);
-            console.log(method);
-            $.ajax({
-                url: formUrl,
-                type: method,
-                dataType: "json",
-                data: $(this).serialize(),
-                success: function (data) {
-                    console.log(data)
-                    // Assuming data is an array of objects
-                    Swal.fire({
-                        text: "Form has been successfully submitted!",
-                        icon: "success",
-                        buttonsStyling: false,
-                        confirmButtonText: "Ok, got it!",
-                        customClass: {
-                            confirmButton: "btn btn-primary"
-                        }
-                    }).then(function (result) {
-                        $('#modal-form').hide();
-                        $('#areas-table').DataTable().ajax.reload();
-
-                        // if (result.isConfirmed) {
-                        //     modal.hide();
-                        // }
-                    });
-                },
-                error: function (error) {
-                    console.log(error);
-                }
-            });
-            // More code...
-        });
-
-        $(document).on('click', '.close', function () {
-            var model = $(this).closest('#modal-form');
-            model.hide();
-        });
-    });
-
-
-</script>
+<script src="{{asset('js/main.js')}}"></script>
 @stack('scripts')
 <!--end::Javascript-->
 </body>

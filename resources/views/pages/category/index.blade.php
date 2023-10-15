@@ -2,7 +2,7 @@
     <x-slot name="toolbar">
         {{--        @include('partials.toolbar')--}}
     </x-slot>
-    <x-table action="{{route('area.create')}}">
+    <x-table action="{{route('category.create')}}">
         {{ $dataTable->table() }}
     </x-table>
     @push('scripts')

@@ -495,26 +495,27 @@ if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_stat
                     <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                         <!--begin:Menu link-->
                         <span class="menu-link">
-												<span class="menu-icon">
-													<i class="ki-duotone ki-abstract-39 fs-2">
-														<span class="path1"></span>
-														<span class="path2"></span>
-													</i>
-												</span>
-												<span class="menu-title">Stock</span>
-												<span class="menu-arrow"></span>
-											</span>
+                            <span class="menu-icon">
+{{--                                <i class="ki-duotone ki-abstract-39 fs-2">--}}
+{{--                                    <span class="path1"></span>--}}
+{{--                                    <span class="path2"></span>--}}
+{{--                                </i>--}}
+                                <i class="fa-solid fa-boxes-stacked fs-2"></i>
+                            </span>
+                            <span class="menu-title">@lang('words.stock')</span>
+                            <span class="menu-arrow"></span>
+                        </span>
                         <!--end:Menu link-->
                         <!--begin:Menu sub-->
                         <div class="menu-sub menu-sub-accordion">
                             <!--begin:Menu item-->
                             <div class="menu-item">
                                 <!--begin:Menu link-->
-                                <a class="menu-link" href="#">
+                                <a class="menu-link" href="{{route('category.index')}}">
                                     <span class="menu-bullet">
                                         <span class="bullet bullet-dot"></span>
                                     </span>
-                                    <span class="menu-title">Categories</span>
+                                    <span class="menu-title text-capitalize">@lang('words.categories')</span>
                                 </a>
                                 <!--end:Menu link-->
                             </div>
@@ -522,11 +523,11 @@ if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_stat
                             <!--begin:Menu item-->
                             <div class="menu-item">
                                 <!--begin:Menu link-->
-                                <a class="menu-link" href="#">
-														<span class="menu-bullet">
-															<span class="bullet bullet-dot"></span>
-														</span>
-                                    <span class="menu-title">Sub Category</span>
+                                <a class="menu-link" href="{{route('section.index')}}">
+                                    <span class="menu-bullet">
+                                        <span class="bullet bullet-dot"></span>
+                                    </span>
+                                    <span class="menu-title text-capitalize">@lang('words.sections')</span>
                                 </a>
                                 <!--end:Menu link-->
                             </div>
@@ -534,11 +535,11 @@ if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_stat
                             <!--begin:Menu item-->
                             <div class="menu-item">
                                 <!--begin:Menu link-->
-                                <a class="menu-link" href="../../demo1/dist/pages/social/followers.html">
-														<span class="menu-bullet">
-															<span class="bullet bullet-dot"></span>
-														</span>
-                                    <span class="menu-title">Followers</span>
+                                <a class="menu-link" href="{{route('company.index')}}">
+                                    <span class="menu-bullet">
+                                        <span class="bullet bullet-dot"></span>
+                                    </span>
+                                    <span class="menu-title text-capitalize">@lang('words.companies')</span>
                                 </a>
                                 <!--end:Menu link-->
                             </div>
@@ -546,11 +547,11 @@ if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_stat
                             <!--begin:Menu item-->
                             <div class="menu-item">
                                 <!--begin:Menu link-->
-                                <a class="menu-link" href="../../demo1/dist/pages/social/settings.html">
-														<span class="menu-bullet">
-															<span class="bullet bullet-dot"></span>
-														</span>
-                                    <span class="menu-title">Settings</span>
+                                <a class="menu-link" href="{{route('product.index')}}">
+                                    <span class="menu-bullet">
+                                        <span class="bullet bullet-dot"></span>
+                                    </span>
+                                    <span class="menu-title text-capitalize">@lang('words.products')</span>
                                 </a>
                                 <!--end:Menu link-->
                             </div>
